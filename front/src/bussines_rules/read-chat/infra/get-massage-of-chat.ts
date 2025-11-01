@@ -2,7 +2,7 @@ import type { Message } from "../domain/message.type";
 
 
 export const getMassageOfChat = async (): Promise<Message[]> => {
-    return []
+    // return []
     return [
         {
             messageId: "1",
