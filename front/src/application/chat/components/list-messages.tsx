@@ -17,6 +17,7 @@ export const ListMessages = (props: ListMessagesProps) => {
                     (msg, idx) => (
                         <div
                             key={idx}
+                            ref={idx === messages.length - 1 ? (el) => { if (el) el.scrollIntoView({ behavior: "smooth" }); } : undefined}
                             className={`flex flex-col max-w-lg ${msg.senderId === props.username
                                 ? "self-end items-end"
                                 : "self-start items-start"
