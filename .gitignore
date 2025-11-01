@@ -1,0 +1,68 @@
+# // ─────────────────────────────────────
+# // 
+# BACK
+# // 
+# // ─────────────────────────────────────
+back/node_modules
+back/dist/
+back/build/
+back/*.tsbuildinfo
+back/.vscode
+back/.DS_Store
+back/.DS_Store?
+back/._*
+back/.Spotlight-V100
+back/.Trashes
+back/ehthumbs.db
+back/Thumbs.db
+back/logs
+back/*.log
+back/temp/
+back/tmp/
+back/.env
+back/.env.local
+back/.env.development.local
+back/.env.test.local
+back/.env.production.local
+back/.yarn/cache
+back/.yarn/unplugged
+back/.yarn/build-state.yml
+back/.yarn/install-state.gz
+back/.pnp.*
+
+# // ─────────────────────────────────────
+# // 
+# FRONT
+# // 
+# // ─────────────────────────────────────
+
+# Logs
+front/logs
+front/*.log
+front/npm-debug.log*
+front/yarn-debug.log*
+front/yarn-error.log*
+front/pnpm-debug.log*
+front/lerna-debug.log*
+front/node_modules
+front/dist
+front/dist-ssr
+front/*.local
+
+# // ─────────────────────────────────────
+# // 
+# DB
+# // 
+# // ─────────────────────────────────────
+db/pgadmin
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
