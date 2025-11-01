@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { UserNameModal } from "../welcome/components/user-name.modal";
+
+import { UserNameModal } from "./components/user-name.modal";
+import { Header } from "./components/header";
+import { Messages } from "./components/messages";
+import { Input } from "./components/input";
 
 const ChatPage = () => {
 
-    const [username, setUsername] = useState<string | undefined>(undefined);
+    const [username, setUsername] = useState<string | undefined>("jose");
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
@@ -11,7 +15,8 @@ const ChatPage = () => {
     }, [username]);
 
     return (
-        <div>
+
+        <div className="h-screen w-screen flex flex-col">
 
             {showModal && (
                 <UserNameModal
@@ -20,6 +25,15 @@ const ChatPage = () => {
                     setUsername={setUsername}
                 />
             )}
+
+            <Header username={username} />
+
+            <Messages username={username} />
+
+
+            <div className="mt-4">
+                <Input />
+            </div>
 
         </div>
     )

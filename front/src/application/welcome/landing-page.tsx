@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Header } from "../shared/header";
 
 export const LandingPage = () => {
 
@@ -12,6 +13,9 @@ export const LandingPage = () => {
 
   return (
     <>
+
+      <Header />
+
       <div className="min-h-screen flex flex-col bg-linear-to-br from-blue-50 to-gray-100 text-gray-800">
         <main className="flex-1 px-4 py-8 max-w-3xl mx-auto w-full">
           <section className="mb-10">
