@@ -53,11 +53,13 @@ services:
     volumes:
       - ./back/src:/app/src
     environment:
+      PORT: 8000
       POSTGRES_DB: db_for_commands
       POSTGRES_URL: localhost
       POSTGRES_PORT: 5432
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 123456
+      brokers: "broker:9092"
     depends_on:
       - db
       - broker

@@ -15,6 +15,11 @@ export interface AppConfig {
   jwt?: JWTConfig;
   cors: CORSConfig;
   POSTGRES_ENV: POSTGRES_ENV;
+  KAFKA: KafkaConfig;
+}
+
+export interface KafkaConfig {
+  brokers: string[];
 }
 
 export interface POSTGRES_ENV {
@@ -69,6 +74,11 @@ class EnviromentVariables {
           POSTGRES_USER: process.env.POSTGRES_USER || "NOT-FOUND",
           POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD || "NOT-FOUND",
           POSTGRES_PORT: process.env.POSTGRES_PORT || "5432",
+        },
+        KAFKA: {
+          brokers: process.env.brokers
+            ? process.env.brokers.split(",")
+            : [],
         },
       };
     }

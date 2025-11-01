@@ -1,5 +1,4 @@
 import { Express, Router } from "express";
-import { ChatMessagePayload, ChatMessageController } from "../sockets/chat-message.controller";
 import { MessageExchangeApplication } from "@/app/message-exchange/application/message-exchange.application";
 import { ReadChatApplication } from "@/app/read-chat/application/read-chat.application";
 

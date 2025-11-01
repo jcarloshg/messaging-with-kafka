@@ -1,19 +1,22 @@
 import { Consumer, EachMessagePayload, Kafka, Partitioners } from 'kafkajs';
 import { MessageCreatedDomainEvent, MessageCreatedDomainEventPrimitives } from "@/app/message-exchange/domain/domain-event/message-created.domain-event";
+import { enviromentVariables } from '@/app/shared/infrastructure/utils/enviroment-variables';
+
+const KAFKA_ENV = enviromentVariables.KAFKA;
 
 export class InitKafka {
 
     // TODO: put this on envieronment variables
     public static readonly CLIENT_ID = 'message-exchange';
-    public static readonly BROKERS = ['localhost:9092'];
 
     public readonly kafka: Kafka;
     private static instance: InitKafka;
 
     constructor() {
+        console.log(`enviromentVariables: `, enviromentVariables);
         this.kafka = new Kafka({
             clientId: InitKafka.CLIENT_ID,
-            brokers: InitKafka.BROKERS,
+            brokers: KAFKA_ENV.brokers,
         });
     }
 
@@ -79,11 +82,18 @@ export class MessageCreatedKafkaConsumer {
     }
 
     public async init(): Promise<void> {
-        await this._consumer.connect();
-        await this._consumer.subscribe({
-            topics: [MessageCreatedDomainEvent.eventName],
-            fromBeginning: false,
-        });
+        try {
+
+            await this._consumer.connect();
+            await this._consumer.subscribe({
+                topics: [MessageCreatedDomainEvent.eventName],
+                fromBeginning: false,
+            });
+        } catch (error) {
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            console.error('[MessageCreatedKafkaConsumer] - [ERROR]:', errorMessage);
+        }
+
         await this._consumer.run({
             eachMessage: async (payload: EachMessagePayload) => {
 
