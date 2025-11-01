@@ -1,11 +1,18 @@
+import { useNavigate } from "react-router";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const LandingPage = () => {
+
+  const navigate = useNavigate();
+
+  const goToChat = () => {
+    navigate("/chat");
+  }
+
   return (
     <>
       <div className="min-h-screen flex flex-col bg-linear-to-br from-blue-50 to-gray-100 text-gray-800">
-
         <main className="flex-1 px-4 py-8 max-w-3xl mx-auto w-full">
           <section className="mb-10">
             <h2 className="text-2xl font-semibold mb-2">Welcome to Your Messaging Platform</h2>
@@ -22,7 +29,9 @@ export const LandingPage = () => {
               experiencing the benefits of Kafka-powered communication.
             </p>
             <div className="flex gap-4">
-              <Button>Start Messaging</Button>
+              <Button onClick={goToChat}>
+                Start Messaging
+              </Button>
               <Button variant="secondary">View Documentation</Button>
             </div>
           </section>
