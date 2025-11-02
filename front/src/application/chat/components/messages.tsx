@@ -3,6 +3,7 @@ import { getMassageOfChat } from "@/bussines_rules/read-chat/infra/get-massage-o
 import type { Message } from "@/bussines_rules/read-chat/domain/message.type";
 import { ListMessages } from "./list-messages";
 import { NoMessagesYet } from "./NoMessagesYet";
+import { ReadChatApplication } from "@/bussines_rules/read-chat/application/read-chat.application";
 
 export interface MessageProps {
     username?: string;
@@ -14,8 +15,11 @@ export const Messages = (props: MessageProps) => {
 
     useEffect(() => {
         (async () => {
-            const messages = await getMassageOfChat();
-            setMessages(messages);
+            const readChatApplication = new ReadChatApplication();
+            const messages = await readChatApplication.execute();
+            console.log(`messages: `, messages);
+            // const messages = await getMassageOfChat();
+            // setMessages(messages);
         })();
     }, []);
 
