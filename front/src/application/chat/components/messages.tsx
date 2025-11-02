@@ -17,7 +17,7 @@ export const Messages = (props: MessageProps) => {
         (async () => {
             const readChatApplication = new ReadChatApplication();
             const messages = await readChatApplication.execute();
-            console.log(`messages: `, messages);
+            setMessages(messages);
             // const messages = await getMassageOfChat();
             // setMessages(messages);
         })();

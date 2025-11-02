@@ -23,8 +23,8 @@ export class MessageCrudAxios implements CrudRepository<Message> {
 
     async findAll(): Promise<Message[]> {
         try {
-            const response = await this.axiosInstance.get<Message[]>("/messages");
-            return response.data;
+            const response = await this.axiosInstance.get("");
+            return response.data.data.data as Message[];
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : String(error);
             console.error(`[MessgaeCrudAxios] - [findAll]: ${errorMessage}`);
@@ -48,3 +48,4 @@ export class MessageCrudAxios implements CrudRepository<Message> {
         throw new Error("Method not implemented.");
     }
 }
+

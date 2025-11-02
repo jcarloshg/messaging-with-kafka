@@ -64,6 +64,16 @@ services:
       - db
       - broker
 
+  front:
+    build: ./front
+    container_name: front
+    ports:
+      - 5173:5173
+    volumes:
+      - ./front/src:/app/src
+    environment:
+      VITE_BACKEND_URL: http://localhost:8000
+
 volumes:
   db:
     driver: local
