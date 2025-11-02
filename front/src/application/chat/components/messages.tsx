@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getMassageOfChat } from "@/bussines_rules/read-chat/infra/get-massage-of-chat";
 import type { Message } from "@/bussines_rules/read-chat/domain/message.type";
 import { ListMessages } from "./list-messages";
 import { NoMessagesYet } from "./NoMessagesYet";
@@ -16,8 +15,17 @@ export const Messages = (props: MessageProps) => {
     useEffect(() => {
         (async () => {
             const readChatApplication = new ReadChatApplication();
-            const messages = await readChatApplication.execute();
-            setMessages(messages);
+            const messagesResp = await readChatApplication.execute();
+            if (messagesResp.success && messagesResp.messages) {
+                setMessages(messagesResp.messages);
+                return;
+            }
+
+            if (messagesResp.error) {
+                alert(messagesResp.error);
+                return;
+            }
+
             // const messages = await getMassageOfChat();
             // setMessages(messages);
         })();
