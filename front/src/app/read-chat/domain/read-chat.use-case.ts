@@ -1,5 +1,5 @@
 import type { Message } from "./message.type";
-import type { MessageCrudRepository } from "./messgae.repo";
+import type { MessageCrudRepository } from "../../share/domain/message/messgae.repo";
 
 export class ReadChatUseCase {
 
@@ -25,7 +25,7 @@ export class ReadChatUseCase {
 
             // 2. map to domain
             const messages: Message[] = messagesResp.map((msg) => ({
-                messageId: msg.id,
+                messageId: msg.messageId,
                 senderId: msg.senderId,
                 content: msg.content,
                 timestamp: msg.timestamp.toISOString()

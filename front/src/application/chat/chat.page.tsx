@@ -7,7 +7,7 @@ import { InputChat } from "./components/input";
 
 const ChatPage = () => {
 
-    const [username, setUsername] = useState<string | undefined>("jose");
+    const [username, setUsername] = useState<string | undefined>("luis123");
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
@@ -30,11 +30,9 @@ const ChatPage = () => {
 
             <Messages username={username} />
 
-
-            <div className="mt-4">
-                <InputChat />
-            </div>
-
+            {
+                username && <InputChat username={username} />
+            }
         </div>
     )
 }

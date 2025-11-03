@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import type { UserForm } from "@/app/share/domain/user.entity";
+import type { UserForm } from "@/app/share/domain/user/user.entity";
 import { Input } from "@/components/ui/input"
 import { Field, FieldDescription } from "@/components/ui/field"
 

@@ -1,5 +1,4 @@
-import type { Message } from "@/bussines_rules/read-chat/domain/message.type";
-
+import type { Message } from "@/app/read-chat/domain/message.type";
 
 export interface ListMessagesProps {
     username?: string;

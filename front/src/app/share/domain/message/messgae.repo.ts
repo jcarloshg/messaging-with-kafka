@@ -1,30 +1,30 @@
-import type { CrudRepository } from "@/bussines_rules/share/domain/crud.repository";
+import type { CrudRepository } from "@/app/share/domain/repo/crud.repository";
 
 
-export interface MessageFromDB {
-    id: string;
+export interface MessageToBack {
+    messageId: string;
     senderId: string;
     content: string;
     timestamp: Date;
 }
 
-export class MessageCrudRepository implements CrudRepository<MessageFromDB> {
+export class MessageCrudRepository implements CrudRepository<MessageToBack> {
 
     constructor() { }
 
-    create(item: MessageFromDB): Promise<MessageFromDB | null> {
+    create(item: MessageToBack): Promise<MessageToBack | null> {
         throw new Error("Method not implemented.");
     }
-    findAll(): Promise<MessageFromDB[]> {
+    findAll(): Promise<MessageToBack[]> {
         throw new Error("Method not implemented.");
     }
-    findById(id: string): Promise<MessageFromDB | null> {
+    findById(id: string): Promise<MessageToBack | null> {
         throw new Error("Method not implemented.");
     }
-    findByFields(fields: Partial<MessageFromDB>): Promise<MessageFromDB | null> {
+    findByFields(fields: Partial<MessageToBack>): Promise<MessageToBack | null> {
         throw new Error("Method not implemented.");
     }
-    update(id: string, item: Partial<MessageFromDB>): Promise<MessageFromDB | null> {
+    update(id: string, item: Partial<MessageToBack>): Promise<MessageToBack | null> {
         throw new Error("Method not implemented.");
     }
     softDelete(id: string): Promise<boolean> {

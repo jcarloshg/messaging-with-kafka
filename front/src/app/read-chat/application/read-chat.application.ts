@@ -1,6 +1,7 @@
+import { MessageCrudAxios } from "@/app/share/infra/axios/messgae.crud-axios";
 import type { Message } from "../domain/message.type";
 import { ReadChatUseCase } from "../domain/read-chat.use-case";
-import { MessageCrudAxios } from "../infra/axios/messgae.crud-axios";
+
 
 export class ReadChatApplication {
 
