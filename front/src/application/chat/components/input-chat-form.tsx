@@ -1,39 +1,44 @@
 import { useEffect } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import type { UserForm } from "@/app/share/domain/user.entity";
+
 import { Input } from "@/components/ui/input"
 import { Field, FieldDescription } from "@/components/ui/field"
 
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
 
 const validationSchema = Yup.object({
-    username: Yup.string()
-        .matches(/^[a-zA-Z0-9]+$/, "username can only contain letters and numbers")
-        .min(2, "username must be at least 2 characters")
-        .max(50, "username must be at most 50 characters")
-        .required("username is required"),
+    message: Yup.string()
+        .min(2, "message must be at least 2 characters")
+        .max(250, "message must be at most 250 characters")
+        .required("message is required"),
 });
 
-export interface FormState {
-    userForm: UserForm;
+export interface InputChatForm {
+    message: string;
+}
+
+export interface InputChatFormState {
+    userForm: InputChatForm;
     isValid: boolean;
 }
 
-export interface UserNameFormProps {
-    userForm: UserForm;
-    onChange: (formState: FormState) => void;
+export interface InputChatFormProps {
+    inputChatForm: InputChatForm;
+    onChange: (formState: InputChatFormState) => void;
     onPressEnter?: () => Promise<void>;
 }
 
-export const UserNameForm = (props: UserNameFormProps) => {
+export const InputChatForm = (props: InputChatFormProps) => {
 
-    const { userForm, onChange, onPressEnter } = props;
+    const { inputChatForm, onChange, onPressEnter } = props;
+
 
     const formik = useFormik({
-        initialValues: userForm,
+        initialValues: inputChatForm,
         validationSchema,
         validateOnMount: true,
-        onSubmit: async (values: UserForm) => {
+        onSubmit: async (values: InputChatForm) => {
             // You can handle form submission here if needed
             // For now, just log the values to avoid unused variable error
             console.log(values);
@@ -45,10 +50,11 @@ export const UserNameForm = (props: UserNameFormProps) => {
             userForm: formik.values,
             isValid: formik.isValid,
         });
-        // return () => onChange({ userForm: formik.values, isValid: formik.isValid });
     }, [formik.values]);
 
+
     return (
+
         <form
             className="justify-center items-center w-full"
             onKeyDown={async (e) => {
@@ -65,19 +71,19 @@ export const UserNameForm = (props: UserNameFormProps) => {
                     name="username"
                     autoComplete="off"
                     placeholder="Evil Rabbit"
-                    value={formik.values.username}
+                    value={formik.values.message}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 />
                 {
-                    formik.touched.username && formik.errors.username ? (
+                    formik.touched.message && formik.errors.message ? (
                         <FieldDescription className="text-red-500">
-                            {formik.errors.username}
+                            {formik.errors.message}
                         </FieldDescription>
                     ) : null
                 }
             </Field>
 
         </form >
-    );
-};
+    )
+}

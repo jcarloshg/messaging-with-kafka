@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import type { Message } from "@/bussines_rules/read-chat/domain/message.type";
+import type { Message } from "@/app/read-chat/domain/message.type";
+import { ReadChatApplication } from "@/app/read-chat/application/read-chat.application";
+
 import { ListMessages } from "./list-messages";
 import { NoMessagesYet } from "./NoMessagesYet";
-import { ReadChatApplication } from "@/bussines_rules/read-chat/application/read-chat.application";
+
 
 export interface MessageProps {
     username?: string;

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { UserNameModal } from "./components/user-name.modal";
 import { Header } from "./components/header";
 import { Messages } from "./components/messages";
-import { Input } from "./components/input";
+import { InputChat } from "./components/input";
 
 const ChatPage = () => {
 
@@ -32,7 +32,7 @@ const ChatPage = () => {
 
 
             <div className="mt-4">
-                <Input />
+                <InputChat />
             </div>
 
         </div>
