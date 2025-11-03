@@ -16,8 +16,7 @@ export const InputChat = (props: InputProps) => {
     });
 
     const sendMessage = async () => {
-        console.log("aslkdfjaskd");
-        
+        console.log(`inputChatFormState: `, inputChatFormState);
     }
 
 
@@ -28,12 +27,7 @@ export const InputChat = (props: InputProps) => {
             <InputChatForm
                 inputChatForm={inputChatFormState.userForm}
                 onChange={setInputChatFormState}
-                onPressEnter={async () => {
-                    if (!inputChatFormState.isValid) {
-                        alert("Please enter a valid message.");
-                        return;
-                    }
-                }}
+                onPressEnter={sendMessage}
             />
 
             <Button onClick={sendMessage}>

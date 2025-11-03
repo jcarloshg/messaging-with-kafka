@@ -67,10 +67,10 @@ export const InputChatForm = (props: InputChatFormProps) => {
             <Field className="w-full ">
                 {/* <FieldLabel htmlFor="username">Username:</FieldLabel> */}
                 <Input
-                    id="username"
-                    name="username"
+                    id="message"
+                    name="message"
                     autoComplete="off"
-                    placeholder="Evil Rabbit"
+                    placeholder="Type your message..."
                     value={formik.values.message}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
