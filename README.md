@@ -4,15 +4,15 @@ A full-stack, event-driven messaging architecture using **Kafka**, **Node.js**, 
 
 ## 📚 Table of Contents
 
-1. Project Overview
-2. Architecture
-3. Key Features
-4. Implementation Use Cases
-5. Technologies Used
-6. Folder Structure
-7. Setup & Getting Started
-8. API Endpoints & Events
-9. Screenshots
+1. 📝 [Project Overview](#-project-overview)
+2. 🏗️ [Architecture](#-architecture)
+3. 🚀 [Key Features](#-key-features)
+4. 🚦 [Implementation Use Cases](#-implementation-use-cases)
+5. 🛠️ [Technologies Used](#-technologies-used)
+6. 📁 [Folder Structure](#-folder-structure)
+7. 🚀 [Setup & Getting Started](#-setup--getting-started)
+8. 🌐 [API Endpoints & Events](#-api-endpoints--events)
+9. 🖼️ [Screenshots](#-screenshots)
 
 ## 📝 Project Overview
 
@@ -171,7 +171,7 @@ docker-compose up --build
 
 **Request Body:**
 
-````json
+```json
 [
   {
     "messageId": "string",
@@ -180,7 +180,7 @@ docker-compose up --build
     "timestamp": "ISO8601"
   }
 ]
-````
+```
 
 #### GET /api/messages/health
 
