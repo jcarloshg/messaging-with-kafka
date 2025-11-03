@@ -4,13 +4,17 @@
 
 1. 🚦 [Implementation Use Cases](#implementation-use-cases)
 
-- 💬 [1. Simple Message Exchange](#1-simple-message-exchange)
-- 📖 [2. Chat Message Reading](#2-chat-message-reading)
+- 💬 [Simple Message Exchange](#1-simple-message-exchange)
+- 📖 [Chat Message Reading](#2-chat-message-reading)
 
 2. 🛠️ [Technologies Used](#technologies-used)
 3. 📦 [Main Modules](#main-modules)
 4. ⚙️ [How It Works](#how-it-works)
 5. 🚀 [Getting Started](#getting-started)
+6. 🌐 [Enable Endpoints](#enable-endpoints)
+
+- 🛣️ [REST API Endpoints](#rest-api-endpoints)
+- 🔌 [Socket.IO Events](#socketio-events)
 
 ## 🚦 **Implementation Use Cases**
 
