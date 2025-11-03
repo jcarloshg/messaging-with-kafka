@@ -13,8 +13,9 @@ export const messageRoute = async (app: Express) => {
     router.post('/', async (req, res) => {
         try {
             const messageExchangeApplication = new MessageExchangeApplication();
+            console.log(`req: `, req.body);
             const result = await messageExchangeApplication.execute(req);
-            res.status(200).send(result);
+            res.status(result.success ? 200 : 400).send(result);
         } catch (error) {
             res.status(500).send({ error: 'Internal Server Error' });
         }

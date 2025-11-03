@@ -51,8 +51,9 @@ export class MessageExchangeApplication {
             const useCase = new MessageExchangeUseCase(eventPublisher);
             const result = await useCase.execute(command);
             return {
-                success: true,
-                data: result,
+                success: result.success,
+                data: result.data,
+                error: result.error,
             };
 
         } catch (error) {
