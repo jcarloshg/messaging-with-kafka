@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { InputChatForm, type InputChatFormState } from "./input-chat-form";
 import { Button } from "@/components/ui/button";
 import { MessageExchangeApplication } from "@/app/message-exchange/application/message-exchange.application";
 import type { MessageProps } from "@/app/message-exchange/domain/message.type";
+import { InputChatForm, type InputChatFormState } from "./input-chat-form";
 
 
 export interface InputProps {
@@ -12,7 +12,7 @@ export interface InputProps {
 export const InputChat = (props: InputProps) => {
 
     const [inputChatFormState, setInputChatFormState] = useState<InputChatFormState>({
-        userForm: {
+        inputChatForm: {
             message: "",
         },
         isValid: false,
@@ -22,7 +22,7 @@ export const InputChat = (props: InputProps) => {
         try {
             const messageExchangeApp = new MessageExchangeApplication();
             const messageProps: MessageProps = {
-                content: inputChatFormState.userForm.message,
+                content: inputChatFormState.inputChatForm.message,
                 timestamp: new Date(),
                 messageId: crypto.randomUUID(),
                 senderId: props.username,
@@ -39,7 +39,7 @@ export const InputChat = (props: InputProps) => {
         <div className="flex flex-row w-full max-w-2xl mx-auto gap-2 p-2 sm:p-4 ">
 
             <InputChatForm
-                inputChatForm={inputChatFormState.userForm}
+                inputChatForm={inputChatFormState.inputChatForm}
                 onChange={setInputChatFormState}
                 onPressEnter={sendMessage}
             />

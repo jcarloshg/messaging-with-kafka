@@ -7,24 +7,24 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 
-const validationSchema = Yup.object({
+const FormValidationSchema = Yup.object({
     message: Yup.string()
         .min(2, "message must be at least 2 characters")
         .max(250, "message must be at most 250 characters")
         .required("message is required"),
 });
 
-export interface InputChatForm {
+export interface FormProps {
     message: string;
 }
 
 export interface InputChatFormState {
-    userForm: InputChatForm;
+    inputChatForm: FormProps;
     isValid: boolean;
 }
 
 export interface InputChatFormProps {
-    inputChatForm: InputChatForm;
+    inputChatForm: FormProps;
     onChange: (formState: InputChatFormState) => void;
     onPressEnter?: () => Promise<void>;
 }
@@ -33,12 +33,11 @@ export const InputChatForm = (props: InputChatFormProps) => {
 
     const { inputChatForm, onChange, onPressEnter } = props;
 
-
-    const formik = useFormik({
+    const formik = useFormik<FormProps>({
         initialValues: inputChatForm,
-        validationSchema,
+        validationSchema: FormValidationSchema,
         validateOnMount: true,
-        onSubmit: async (values: InputChatForm) => {
+        onSubmit: async (values: FormProps) => {
             // You can handle form submission here if needed
             // For now, just log the values to avoid unused variable error
             console.log(values);
@@ -47,7 +46,9 @@ export const InputChatForm = (props: InputChatFormProps) => {
 
     useEffect(() => {
         onChange({
-            userForm: formik.values,
+            inputChatForm: {
+                message: formik.values.message,
+            },
             isValid: formik.isValid,
         });
     }, [formik.values]);
