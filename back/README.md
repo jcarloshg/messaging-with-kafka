@@ -14,26 +14,34 @@
 
 ### 1. Simple Message Exchange
 
-
 **Overview:**
 The Simple Message Exchange module enables asynchronous communication between users or services using Kafka topics. It is designed with Domain-Driven Design principles and separates concerns into application, domain, and infrastructure layers. The sender issues commands, which trigger domain events and are handled by event handlers for side effects such as notifications, persistence, and message delivery.
 
 **Key Components:**
+
 - **Application Layer:**
-   - `message-exchange.application.ts`: Orchestrates message sending, event publishing, and coordinates domain logic.
-   - `domain-handlers/`: Contains event handlers for:
-      - Notifying recipients (`notify.event-handler.ts`)
-      - Saving messages to repositories (`save-in-repo.event-handler.ts`)
-      - Sending messages to recipients (`send-message-to-recipients.event-handler.ts`)
+  - `message-exchange.application.ts`: Orchestrates message sending, event publishing, and coordinates domain logic.
+  - `domain-handlers/`: Contains event handlers for:
+    - Notifying recipients (`notify.event-handler.ts`)
+    - Saving messages to repositories (`save-in-repo.event-handler.ts`)
+    - Sending messages to recipients (`send-message-to-recipients.event-handler.ts`)
 - **Domain Layer:**
-   - `message-exchange.command.ts`: Defines commands for message exchange operations.
-   - `message-exchange.use-case.ts`: Implements use cases for sending and processing messages.
-   - `domain-event/`: Defines domain events (e.g., `message-created.domain-event.ts`).
-   - `entity/`: Message aggregates and entities (`message.aggregate.ts`, `message.entity.ts`).
+  - `message-exchange.command.ts`: Defines commands for message exchange operations.
+  - `message-exchange.use-case.ts`: Implements use cases for sending and processing messages.
+  - `domain-event/`: Defines domain events (e.g., `message-created.domain-event.ts`).
+  - `entity/`: Message aggregates and entities (`message.aggregate.ts`, `message.entity.ts`).
 - **Infrastructure Layer:**
-   - `infra/kafka/`: Kafka integration for event bus and publisher (`event-bus.kafka.ts`, `event-publisher.kafka.ts`, `init-kafka.ts`).
+- `infra/kafka/`: Kafka integration for event bus and publisher
+
+  - `event-bus.kafka.ts`: Kafka event bus integration.
+  - `event-publisher.kafka.ts`: Publishes events to Kafka topics.
+  - `init-kafka.ts`: Kafka client initialization.
+
+- `infra/sockets/`:
+  - `socket.ts`: Socket integration for real-time message delivery.
 
 **Workflow:**
+
 1. A sender issues a command to send a message.
 2. The application layer processes the command, creates a domain event, and publishes it to Kafka.
 3. Event handlers react to the domain event, performing actions such as notifying recipients, saving the message, and delivering it to Kafka consumers.
