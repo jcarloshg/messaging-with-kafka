@@ -84,7 +84,7 @@ All services are defined in [`docker-compose.yml`](./docker-compose.yml) and can
   1. Sender issues a command to send a message
   2. Application layer validates and invokes domain use case
   3. Use case creates message entity and triggers domain event
-  # 🏛️ Messaging with Kafka
+  4. Messaging with Kafka
   5. Event handlers notify recipients, persist message, and deliver via sockets
 
 **Frontend:**
@@ -115,37 +115,42 @@ All services are defined in [`docker-compose.yml`](./docker-compose.yml) and can
   1. Producer publishes chat messages to Kafka
   2. Consumer subscribes via sockets/API, displays messages in real time or on demand
 
-## 🛠️ Technologies Used
+### 📦 Packages
 
-- Vite
-- 🎨 Tailwind CSS
-- 🦄 KafkaJS
-- 🟣 Socket.IO
-- 🌐 Axios
-- 🧬 Zod
-- 🧱 Radix UI
-- 🧪 Jest
-- 📦 Lucide React
-- 📦 Class Variance Authority
-- 📦 Yup
-- 🟫 Express
-- 🔵 PostgreSQL
-- 🔷 Sequelize
-- 🟩 Nodemon
+#### 🚀 Production Dependencies
 
-```
-root/
-├── back/         # Backend (Node.js, Kafka, Express, PostgreSQL)
-│   ├── src/
-│   │   ├── app/
-├── db/           # Database scripts, migrations, pgadmin
-├── documentation/# Docs and guides
-├── front/        # Frontend (React, Vite, Tailwind)
-│   ├── src/
-│   │   ├── app/
-│   │   ├── application/
-│   │   ├── assets/
-```
+| Package                      | Version  | Purpose                                       | Icon |
+| ---------------------------- | -------- | --------------------------------------------- | ---- |
+| **vite**                     | ^4.0.0   | Fast frontend build tool                      | ⚡   |
+| **tailwindcss**              | ^3.4.0   | Utility-first CSS framework                   | 🎨   |
+| **kafkajs**                  | ^2.2.4   | Kafka client for Node.js                      | 🦄   |
+| **socket.io**                | ^4.7.5   | Real-time bidirectional event communication   | 🟣   |
+| **axios**                    | ^1.6.7   | Promise-based HTTP client                     | 🌐   |
+| **zod**                      | ^4.1.11  | TypeScript-first schema validation library    | 🧬   |
+| **radix-ui**                 | ^1.0.0   | Primitives for building accessible UI         | 🧱   |
+| **lucide-react**             | ^0.284.0 | Icon library for React                        | 📦   |
+| **class-variance-authority** | ^0.7.0   | Utility for conditional class names           | 📦   |
+| **yup**                      | ^1.2.0   | JavaScript schema validation                  | 📦   |
+| **express**                  | ^5.1.0   | Fast, unopinionated web framework for Node.js | 🟫   |
+| **pg**                       | ^8.16.3  | PostgreSQL client for Node.js                 | 🔵   |
+| **sequelize**                | ^6.36.0  | Promise-based ORM for Node.js                 | 🔷   |
+
+#### 🛠️ Development Dependencies
+
+| Package     | Version | Purpose                              | Icon |
+| ----------- | ------- | ------------------------------------ | ---- |
+| **jest**    | ^30.2.0 | JavaScript testing framework         | 🧪   |
+| **nodemon** | ^3.1.10 | Development server with auto-restart | 🟩   |
+
+#### 🌟 Key Package Highlights
+
+- **⚡ Vite**: Lightning-fast frontend tooling for React
+- **🦄 KafkaJS**: Robust Kafka client for event-driven architecture
+- **🟣 Socket.IO**: Real-time communication for chat and messaging
+- **🧬 Zod**: Type-safe schema validation for API and domain models
+- **🔵 PostgreSQL**: Reliable relational database for message persistence
+- **🧪 Jest**: Modern testing framework for backend and frontend
+- **🟩 Nodemon**: Hot-reload development server for rapid iteration
 
 ## 🚀 Setup & Getting Started
 
