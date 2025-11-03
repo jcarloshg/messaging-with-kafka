@@ -5,6 +5,7 @@ import type { MessageFromDB } from "../../domain/messgae.repo";
 export class MessageCrudAxios implements CrudRepository<MessageFromDB> {
 
     private readonly axiosInstance: AxiosInstance;
+    private static _instance: MessageCrudAxios;
 
     constructor() {
         const urlBase = "http://localhost:8000/api/messages/";
@@ -17,14 +18,30 @@ export class MessageCrudAxios implements CrudRepository<MessageFromDB> {
         });
     }
 
+    public static getInstance(): MessageCrudAxios {
+        if (!MessageCrudAxios._instance) {
+            MessageCrudAxios._instance = new MessageCrudAxios();
+        }
+        return MessageCrudAxios._instance;
+    }
+
     create(item: MessageFromDB): Promise<MessageFromDB | null> {
         throw new Error("Method not implemented.");
     }
 
     async findAll(): Promise<MessageFromDB[]> {
         try {
-            const response = await this.axiosInstance.get("");
-            return response.data.data.data as MessageFromDB[];
+            const responseRaw = await this.axiosInstance.get<MessageApiResponse>("");
+            const messagesRaw = responseRaw.data.data;
+            const messagesFromDB: MessageFromDB[] = messagesRaw.map((msg) => ({
+                id: msg.id,
+                senderId: msg.senderId,
+                content: msg.content,
+                timestamp: msg.timestamp instanceof Date
+                    ? msg.timestamp
+                    : new Date(msg.timestamp)
+            }));
+            return messagesFromDB;
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : String(error);
             console.error(`[MessgaeCrudAxios] - [findAll]: ${errorMessage}`);
@@ -49,3 +66,8 @@ export class MessageCrudAxios implements CrudRepository<MessageFromDB> {
     }
 }
 
+
+export interface MessageApiResponse {
+    success: boolean;
+    data: MessageFromDB[];
+}

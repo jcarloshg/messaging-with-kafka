@@ -17,8 +17,9 @@ export class ReadChatApplication {
             const useCase = new ReadChatUseCase(messageRepository);
             const result = await useCase.execute();
             return {
-                success: true,
-                data: result,
+                success: result.success,
+                error: result.error,
+                data: result.data,
             };
 
         } catch (error) {

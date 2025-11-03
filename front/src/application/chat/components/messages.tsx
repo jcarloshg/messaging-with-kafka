@@ -26,8 +26,6 @@ export const Messages = (props: MessageProps) => {
                 return;
             }
 
-            // const messages = await getMassageOfChat();
-            // setMessages(messages);
         })();
     }, []);
 

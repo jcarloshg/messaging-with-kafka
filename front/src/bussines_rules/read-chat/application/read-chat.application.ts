@@ -10,7 +10,7 @@ export class ReadChatApplication {
         try {
 
             // init repos
-            const messageCrudAxios = new MessageCrudAxios();
+            const messageCrudAxios = MessageCrudAxios.getInstance();
 
             // init use case
             const useCase = new ReadChatUseCase(messageCrudAxios);
