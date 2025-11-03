@@ -1,73 +1,67 @@
-# React + TypeScript + Vite
+# Front Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is a frontend application for a messaging system using Kafka. It is built with React and TypeScript, using Vite for development and Tailwind CSS for styling. The project is organized to support chat and message exchange features, with modular domain, application, and infrastructure layers.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## React Compiler
+- Chat Functionality: Real-time chat with message list, input forms, and user management.
+- Message Exchange: Handles sending and receiving messages, with domain-driven design.
+- Socket Integration: Uses socket services for real-time communication.
+- API Communication: Axios-based infrastructure for RESTful interactions.
+- Reusable UI Components: Modular and customizable UI elements.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚦 **Implementation Use Cases**
 
-## Expanding the ESLint configuration
+### 1. 💬 **Simple Message Exchange**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Overview:**
+Users or services send messages to each other through Kafka topics. This enables asynchronous communication and decouples the sender and receiver. The frontend implements this using a domain-driven approach, separating concerns into domain, application, and infrastructure layers.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Frontend Implementation:**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Domain Layer:** Defines message types and validation using Zod schemas (`MessageProps`, `MessageToSend`).
+- **Application Layer:** The `MessageExchangeApplication` class orchestrates the message exchange, validating input and executing the use case.
+- **Use Case:** The `MessageExchangeUseCase` validates business rules and sends messages using a repository pattern.
+- **Infrastructure Layer:** Uses an Axios-based repository (`MessageCrudAxios`) to communicate with the backend API, which interacts with Kafka topics.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Flow:**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Sender:** Publishes a message to a Kafka topic (e.g., `messages`) via the frontend form, which is validated and sent through the application/use case layers.
+2. **Receiver:** Subscribes to the topic and receives messages in real time or on demand, updating the UI accordingly.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 2. 📖 **Chat Message Reading**
+
+**Overview:**
+The application enables users or services to read chat messages from Kafka topics, supporting real-time or on-demand access to conversation data. The frontend is organized into domain, application, and infrastructure layers, with socket integration for real-time updates.
+
+**Frontend Implementation:**
+
+- **Domain Layer:** Defines the `Message` type for chat messages.
+- **Application Layer:** The `ReadChatApplication` class orchestrates reading chat messages, executing the use case and handling responses.
+- **Use Case:** The `ReadChatUseCase` retrieves messages from the repository and maps them to domain objects.
+- **Infrastructure Layer:** Uses an Axios-based repository to fetch messages from the backend, and a socket service (`SocketService`, `useSocket` hook) for real-time message updates.
+
+**Flow:**
+
+1. **Chat Producer:** Publishes chat messages to a Kafka topic (e.g., `chat-messages`).
+2. **Chat Consumer:** The frontend subscribes to the topic via sockets and/or API, reading incoming chat messages and displaying them to users in real time or on demand.
+
+## 🛠️ **Technologies Used**
+
+### Backend
+
+- **Node.js**: JavaScript runtime for building scalable server-side applications.
+- **Express**: Web framework for building RESTful APIs.
+- **TypeScript**: Strongly typed language for scalable development.
+- **KafkaJS**: Apache Kafka client for Node.js, used for messaging and event streaming.
+- **Socket.IO**: Real-time bidirectional event-based communication.
+- **Sequelize**: Promise-based ORM for PostgreSQL and other databases.
+- **PostgreSQL**: Relational database for persistent storage.
+- **Jest**: Testing framework for unit and integration tests.
+- **Zod**: TypeScript-first schema validation library.
+- **dotenv**: Loads environment variables from .env files.
+- **Nodemon**: Utility for automatically restarting the server during development.

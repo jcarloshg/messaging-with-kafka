@@ -66,8 +66,6 @@ The Simple Message Exchange module enables asynchronous communication between us
 **📝 Overview:**
 The Chat Message Reading module enables users or services to retrieve chat messages from the database, supporting access to historical conversation data. It is structured using Domain-Driven Design principles and separates responsibilities into application, domain, and infrastructure layers.
 
-**🔑 Key Components:**
-
 ---
 
 **🧩 Application Layer:**
