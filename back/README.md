@@ -129,3 +129,80 @@ npm test
 ```zsh
 docker-compose up --build
 ```
+
+## Enable endpoitns
+
+### REST API Endpoints
+
+**Base Path:** `/api/messages`
+
+| Method | Path    | Description                           |
+| ------ | ------- | ------------------------------------- |
+| GET    | /health | Health check for the messages service |
+| POST   | /       | Send a new message                    |
+| GET    | /       | Retrieve chat messages                |
+
+#### POST /api/messages
+
+Send a new message.
+**Request Body:**
+
+```
+{
+  "senderId": "string",
+  "recipients": ["string"],
+  "content": "string"
+}
+```
+
+**Response:**
+
+```
+{
+  "success": true,
+  "messageId": "string",
+  ...
+}
+```
+
+#### GET /api/messages
+
+Retrieve chat messages.
+**Response:**
+
+```
+[
+  {
+    "messageId": "string",
+    "senderId": "string",
+    "content": "string",
+    "timestamp": "ISO8601"
+  },
+  ...
+]
+```
+
+#### GET /api/messages/health
+
+Health check endpoint. Returns a simple status message.
+
+### Socket.IO Events
+
+| Event Name   | Description                              |
+| ------------ | ---------------------------------------- |
+| chat-message | Broadcasts a new chat message to clients |
+
+**Payload Example:**
+
+```
+{
+  "payload": {
+    "messageId": "string",
+    "senderId": "string",
+    "content": "string",
+    "timestamp": "ISO8601"
+  }
+}
+```
+
+## Docker
