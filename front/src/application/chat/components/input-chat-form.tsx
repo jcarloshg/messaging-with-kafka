@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useImperativeHandle, forwardRef } from "react";
 
 import { Input } from "@/components/ui/input"
 import { Field, FieldDescription } from "@/components/ui/field"
@@ -29,7 +29,11 @@ export interface InputChatFormProps {
     onPressEnter?: () => Promise<void>;
 }
 
-export const InputChatForm = (props: InputChatFormProps) => {
+export interface InputChatFormRef {
+    resetForm: () => void;
+}
+
+export const InputChatForm = forwardRef<InputChatFormRef, InputChatFormProps>((props, ref) => {
 
     const { inputChatForm, onChange, onPressEnter } = props;
 
@@ -52,6 +56,16 @@ export const InputChatForm = (props: InputChatFormProps) => {
             isValid: formik.isValid,
         });
     }, [formik.values]);
+
+    useImperativeHandle(ref, () => ({
+        resetForm: () => {
+            formik.resetForm({
+                values: {
+                    message: "",
+                }
+            });
+        }
+    }));
 
 
     return (
@@ -87,4 +101,4 @@ export const InputChatForm = (props: InputChatFormProps) => {
 
         </form >
     )
-}
+});

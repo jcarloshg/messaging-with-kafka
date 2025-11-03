@@ -7,7 +7,7 @@ import { InputChat } from "./components/input";
 
 const ChatPage = () => {
 
-    const [username, setUsername] = useState<string | undefined>("luis123");
+    const [username, setUsername] = useState<string | undefined>(undefined);
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
