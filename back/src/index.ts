@@ -4,7 +4,7 @@ import { createServer } from 'http';
 
 import { enviromentVariables } from "./app/shared/infrastructure/utils/enviroment-variables";
 import { messageRoute } from "./presentation/routes/send.routes";
-import { SocketIO } from "./presentation/sockets/socket";
+import { SocketIO } from "./app/message-exchange/infra/sockets/socket";
 import { ChatMessageController } from "./presentation/sockets/chat-message.controller";
 
 const app = express();

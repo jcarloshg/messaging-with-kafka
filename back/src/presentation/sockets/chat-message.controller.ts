@@ -1,4 +1,4 @@
-import { EventName, SocketIO } from "./socket";
+import { EventName, SocketIO } from "../../app/message-exchange/infra/sockets/socket";
 
 export interface ChatMessagePayload {
     messageId: string;
