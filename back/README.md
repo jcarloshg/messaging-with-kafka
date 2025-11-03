@@ -89,39 +89,37 @@ The Chat Message Reading module enables users or services to retrieve chat messa
 
 ## 🛠️ **Technologies Used**
 
----
-
-🟩 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=flat-square) & ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white&style=flat-square): Main backend language and runtime.
-🖤 ![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white&style=flat-square): Web framework for building APIs.
-🟫 ![KafkaJS](https://img.shields.io/badge/KafkaJS-231F20?logo=apachekafka&logoColor=white&style=flat-square): Kafka client for Node.js.
-🔵 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql&logoColor=white&style=flat-square): Database integration for message persistence.
-🔷 ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?logo=sequelize&logoColor=white&style=flat-square): ORM for PostgreSQL.
-⚫ ![Socket.IO](https://img.shields.io/badge/Socket.IO-010101?logo=socket.io&logoColor=white&style=flat-square): Real-time communication.
-🟢 ![Zod](https://img.shields.io/badge/Zod-4EAA25?logo=zod&logoColor=white&style=flat-square): TypeScript schema validation.
-🟥 ![Jest](https://img.shields.io/badge/Jest-C21325?logo=jest&logoColor=white&style=flat-square): Testing framework.
-🟩 ![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?logo=nodemon&logoColor=white&style=flat-square): Development tool for auto-restarting server.
-🐳 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white&style=flat-square) & ![Docker Compose](https://img.shields.io/badge/Docker--Compose-2496ED?logo=docker&logoColor=white&style=flat-square): Containerization and orchestration.
-🌱 ![Env](https://img.shields.io/badge/Env-4EAA25?logo=dotenv&logoColor=white&style=flat-square): Managed via `.env` files.
+- 🟩 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white&style=flat-square) & ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white&style=flat-square): Main backend language and runtime.
+- 🖤 ![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white&style=flat-square): Web framework for building APIs.
+- 🟫 ![KafkaJS](https://img.shields.io/badge/KafkaJS-231F20?logo=apachekafka&logoColor=white&style=flat-square): Kafka client for Node.js.
+- 🔵 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql&logoColor=white&style=flat-square): Database integration for message persistence.
+- 🔷 ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?logo=sequelize&logoColor=white&style=flat-square): ORM for PostgreSQL.
+- ⚫ ![Socket.IO](https://img.shields.io/badge/Socket.IO-010101?logo=socket.io&logoColor=white&style=flat-square): Real-time communication.
+- 🟢 ![Zod](https://img.shields.io/badge/Zod-4EAA25?logo=zod&logoColor=white&style=flat-square): TypeScript schema validation.
+- 🟥 ![Jest](https://img.shields.io/badge/Jest-C21325?logo=jest&logoColor=white&style=flat-square): Testing framework.
+- 🟩 ![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?logo=nodemon&logoColor=white&style=flat-square): Development tool for auto-restarting server.
+- 🐳 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white&style=flat-square) & ![Docker Compose](https://img.shields.io/badge/Docker--Compose-2496ED?logo=docker&logoColor=white&style=flat-square): Containerization and orchestration.
+- 🌱 ![Env](https://img.shields.io/badge/Env-4EAA25?logo=dotenv&logoColor=white&style=flat-square): Managed via `.env` files.
 
 ### 📦 **Main Modules**
 
 ---
 
-💬 **message-exchange/**: Core logic for sending messages, handling events, and integrating with Kafka.
-📖 **read-chat/**: Logic for reading chat messages and retrieving history.
-🧩 **shared/**: Common domain models, event bus, repositories, and infrastructure (JSON, Kafka, Postgres, utilities).
-🎤 **presentation/**: API controllers, middleware, routes, socket handlers, and utility documentation.
-🧪 **test/**: Unit and integration tests for backend modules.
+- 💬 **message-exchange/**: Core logic for sending messages, handling events, and integrating with Kafka.
+- 📖 **read-chat/**: Logic for reading chat messages and retrieving history.
+- 🧩 **shared/**: Common domain models, event bus, repositories, and infrastructure (JSON, Kafka, Postgres, utilities).
+- 🎤 **presentation/**: API controllers, middleware, routes, socket handlers, and utility documentation.
+- 🧪 **test/**: Unit and integration tests for backend modules.
 
 ### ⚙️ **How It Works**
 
 ---
 
-📨 **Event-Driven Messaging**: Messages are sent and processed using Kafka as the event bus. Event handlers manage side effects (notifications, persistence, etc.).
-🧠 **Domain-Driven Design**: Separation of domain logic, application services, and infrastructure for maintainability.
-💾 **Persistence**: Messages can be stored in JSON files or PostgreSQL, depending on the repository implementation.
-🔌 **Socket Communication**: Real-time chat features via WebSocket controllers.
-🧪 **Testing**: Jest is used for automated tests.
+- 📨 **Event-Driven Messaging**: Messages are sent and processed using Kafka as the event bus. Event handlers manage side effects (notifications, persistence, etc.).
+- 🧠 **Domain-Driven Design**: Separation of domain logic, application services, and infrastructure for maintainability.
+- 💾 **Persistence**: Messages can be stored in JSON files or PostgreSQL, depending on the repository implementation.
+- 🔌 **Socket Communication**: Real-time chat features via WebSocket controllers.
+- 🧪 **Testing**: Jest is used for automated tests.
 
 ### 🚀 **Getting Started**
 
