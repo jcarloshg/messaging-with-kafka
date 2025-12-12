@@ -2,6 +2,9 @@
 
 A full-stack, event-driven messaging architecture using **Kafka**, **Node.js**, **React**, and **PostgreSQL**. This project demonstrates real-time chat and message exchange with domain-driven design, modular layers, and modern technologies.
 
+- 🏛️ Domain Driven Design, 🧩 Modular Layers, 🧪 Unit Testing, 🏗️ Event-Driven Architecture, ✅ Validation (Zod/Yup), 🚨 Exception Handling
+- 🐳 Docker, 🐘 PostgreSQL, ⚡ Vite, 🦄 KafkaJS, 🟣 Socket.IO, 🟫 Express, 🔷 Sequelize, 🌐 Axios, 🧬 Zod, 🎨 TailwindCSS, 🧱 Radix UI, 🧪 Jest, 🟩 Nodemon, 📦 Lucide React
+
 ## 📚 Table of Contents
 
 1. 📝 [Project Overview](#-project-overview)
